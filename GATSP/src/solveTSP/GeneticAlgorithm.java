@@ -127,8 +127,13 @@ public class GeneticAlgorithm {
 				float rate=(float)Math.random();
 				
 				SpeciesIndividual oldPoint=list.head.next;//游标
-				while(oldPoint != null && oldPoint != talentSpecies)//寻找表尾结点
+				while(oldPoint != null )//寻找表尾结点
 				{
+					//跳过精英个体
+					if(oldPoint == talentSpecies){
+						oldPoint=oldPoint.next;
+						continue;
+					}
 					if(rate <= oldPoint.rate)
 					{
 						SpeciesIndividual newSpecies=oldPoint.clone();
